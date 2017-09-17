@@ -6,11 +6,11 @@ import { Component } from '@stencil/core';
 export class StencilBootstrapDemo {
   render() {
     return (
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
-          <div class="col-sm text-center">
+          <div class="col-12 text-center">
             <h1>
-              Web Components for Bootstrap 4
+              Web Components for Bootstrap 4 Beta
             </h1>
 
             <p>
@@ -20,7 +20,7 @@ export class StencilBootstrapDemo {
         </div>
 
         <div class="row">
-          <div class="col-md-3 push-md-9">
+          <div class="col-12 col-md-3">
             <ul>
               <li>
                 <stencil-route-link
@@ -35,7 +35,7 @@ export class StencilBootstrapDemo {
             </ul>
           </div>
 
-          <div class="col-md-9 pull-md-3">
+          <div class="col-12 col-md-9">
             <stencil-router id="router">
               <stencil-route
                 url={['/', '/alerts']}
