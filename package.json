@@ -18,7 +18,9 @@
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
-    "@stencil/utils": "latest"
+    "@stencil/utils": "latest",
+    "tslint": "^5.7.0",
+    "tslint-config-airbnb": "^5.3.0"
   },
   "repository": {
     "type": "git",
