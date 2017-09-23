@@ -1,21 +1,39 @@
-# Stencil Starter App
+**Disclaimer**
 
-Stencil is a compiler for building fast web apps using Web Components.
+I started this project to help myself become friends with JSX after putting it off for a very long time, while also learning more about Web Components and the new lovely [StencilJS](https://stenciljs.com/)
 
-Stencil combines the best concepts of the most popular frontend frameworks into a compile-time rather than run-time tool.  Stencil takes TypeScript, JSX, a tiny virtual DOM layer, efficient one-way data binding, an asynchronous rendering pipeline (similar to React Fiber), and lazy-loading out of the box, and generates 100% standards-based Web Components that run in any browser supporting the Custom Elements v1 spec.
+# Bootstrap 4 Web Components (built with StencilJS)
 
-Stencil components are just Web Components, so they work in any major framework or with no framework at all. In many cases, Stencil can be used as a drop in replacement for traditional frontend frameworks given the capabilities now available in the browser, though using it as such is certainly not required.
-
-Stencil also enables a number of key capabilities on top of Web Components, in particular Server Side Rendering (SSR) without the need to run a headless browser, pre-rendering, and objects-as-properties (instead of just strings).
+Implements the following Bootstrap components:
+- [x] [Alerts](https://getbootstrap.com/docs/4.0/components/alerts/)
+- [ ] [Badge](https://getbootstrap.com/docs/4.0/components/badge/)
+- [ ] [Breadcrumb](https://getbootstrap.com/docs/4.0/components/breadcrumb/)
+- [ ] [Buttons](https://getbootstrap.com/docs/4.0/components/buttons/)
+- [ ] [Button group](https://getbootstrap.com/docs/4.0/components/button-group/)
+- [ ] [Card](https://getbootstrap.com/docs/4.0/components/card/)
+- [ ] [Carousel](https://getbootstrap.com/docs/4.0/components/carousel/)
+- [ ] [Collapse](https://getbootstrap.com/docs/4.0/components/collapse/)
+- [ ] [Dropdowns](https://getbootstrap.com/docs/4.0/components/dropdowns/)
+- [ ] [Forms](https://getbootstrap.com/docs/4.0/components/forms/)
+- [ ] [Input group](https://getbootstrap.com/docs/4.0/components/input-group/)
+- [ ] [Jumbotron](https://getbootstrap.com/docs/4.0/components/jumbotron/)
+- [ ] [List group](https://getbootstrap.com/docs/4.0/components/list-group/)
+- [ ] [Modal](https://getbootstrap.com/docs/4.0/components/modal/)
+- [ ] [Navs](https://getbootstrap.com/docs/4.0/components/navs/)
+- [ ] [Navbar](https://getbootstrap.com/docs/4.0/components/navbar/)
+- [ ] [Pagination](https://getbootstrap.com/docs/4.0/components/pagination/)
+- [ ] [Popovers](https://getbootstrap.com/docs/4.0/components/popovers/)
+- [ ] [Progress](https://getbootstrap.com/docs/4.0/components/progress/)
+- [ ] [Scrollspy](https://getbootstrap.com/docs/4.0/components/scrollspy/)
+- [ ] [Tooltips](https://getbootstrap.com/docs/4.0/components/tooltips/)
 
 ## Getting Started
 
-To start a new project using Stencil, clone this repo to a new directory:
+To get a taste of what's been completed so far, clone this repo and serve it locally:
 
 ```bash
-git clone git@github.com:ionic-team/stencil-starter.git my-app
-cd my-app
-git remote rm origin
+git clone git@github.com:kshaaban-/stencil-bootstrap.git
+cd stencil-bootstrap
 ```
 
 and run:
@@ -24,18 +42,3 @@ and run:
 npm install
 npm start
 ```
-
-To view the build, start an HTTP server inside of the `/www` directory.
-
-To watch for file changes during develop, run:
-
-```bash
-npm run dev
-```
-
-To build the app for production, run:
-
-```bash
-npm run build
-```
-
