@@ -42,6 +42,16 @@ export class StencilBootstrapDemo {
                   Badge
                 </stencil-route-link>
               </li>
+              <li>
+                <stencil-route-link
+                  url="/breadcrumb"
+                  urlMatch={['/breadcrumb']}
+                  activeClass="active"
+                  exact={true}
+                >
+                  Breadcrumb
+                </stencil-route-link>
+              </li>
             </ul>
           </div>
 
@@ -56,6 +66,12 @@ export class StencilBootstrapDemo {
               <stencil-route
                 url={['/badge']}
                 component="badge-page"
+                exact={true}
+              >
+              </stencil-route>
+              <stencil-route
+                url={['/breadcrumb']}
+                component="breadcrumb-page"
                 exact={true}
               >
               </stencil-route>
