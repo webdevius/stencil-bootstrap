@@ -32,6 +32,16 @@ export class StencilBootstrapDemo {
                   Alerts
                 </stencil-route-link>
               </li>
+              <li>
+                <stencil-route-link
+                  url="/badge"
+                  urlMatch={['/badge']}
+                  activeClass="active"
+                  exact={true}
+                >
+                  Badge
+                </stencil-route-link>
+              </li>
             </ul>
           </div>
 
@@ -40,6 +50,12 @@ export class StencilBootstrapDemo {
               <stencil-route
                 url={['/', '/alerts']}
                 component="alerts-page"
+                exact={true}
+              >
+              </stencil-route>
+              <stencil-route
+                url={['/badge']}
+                component="badge-page"
                 exact={true}
               >
               </stencil-route>

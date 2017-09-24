@@ -6,7 +6,7 @@ I started this project to help myself become friends with JSX after putting it o
 
 Implements the following Bootstrap components:
 - [x] [Alerts](https://getbootstrap.com/docs/4.0/components/alerts/)
-- [ ] [Badge](https://getbootstrap.com/docs/4.0/components/badge/)
+- [X] [Badge](https://getbootstrap.com/docs/4.0/components/badge/)
 - [ ] [Breadcrumb](https://getbootstrap.com/docs/4.0/components/breadcrumb/)
 - [ ] [Buttons](https://getbootstrap.com/docs/4.0/components/buttons/)
 - [ ] [Button group](https://getbootstrap.com/docs/4.0/components/button-group/)
