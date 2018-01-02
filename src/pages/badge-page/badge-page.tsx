@@ -1,10 +1,11 @@
 import { Component } from '@stencil/core';
+import { BootstrapThemeColor } from '../../common/bootstrap-theme-color.type';
 
 @Component({
   tag: 'badge-page',
 })
 export class BadgePage {
-  badgeTypes = [
+  badgeTypes: BootstrapThemeColor[] = [
     'primary',
     'secondary',
     'success',
