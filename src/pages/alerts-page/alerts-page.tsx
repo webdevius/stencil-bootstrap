@@ -1,4 +1,5 @@
 import { Component, State } from '@stencil/core';
+import { BootstrapThemeColor } from '../../common/bootstrap-theme-color.type';
 
 @Component({
   tag: 'alerts-page',
@@ -7,7 +8,7 @@ export class AlertsPage {
   @State() hasAnimatableDismissibleAlert = true;
   @State() hasDismissibleAlert = true;
 
-  alertTypes = [
+  alertTypes: BootstrapThemeColor[] = [
     'primary',
     'secondary',
     'success',
@@ -50,7 +51,7 @@ export class AlertsPage {
             This example text is going to run a bit longer so that you can
             see how spacing within an alert works with this kind of content.
           </p>
-          <hr/>
+          <hr />
           <p class="mb-0">
             Whenever you need to, be sure to use margin utilities to keep things nice and tidy.
           </p>
