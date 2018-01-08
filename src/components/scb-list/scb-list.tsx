@@ -1,5 +1,6 @@
 import { Component, Prop, PropDidChange, State, Event, EventEmitter, Element, Method } from '@stencil/core';
 import { VirtualNode, ListDataItem } from './scb-list-interfaces';
+import get from 'lodash/get'
 
 
 /**
@@ -105,10 +106,9 @@ export class StencilComponent {
             if (matches)
                 matches.map(matched =>
 
-                    //TODO: replace eval statement with object key find function
                     vnode.vtext = vnode.vtext.replace(
                         matched,
-                        eval('obj.' + matched.slice(1, -1))
+                        get(obj, matched.slice(1, -1), 'undefined')
                     )
                 )
         }
@@ -122,8 +122,7 @@ export class StencilComponent {
 
                             vnode.vattrs[key] = vnode.vattrs[key].replace(
                                 matched,
-                                eval('obj.' + matched.slice(1, -1))
-                            ))
+                                get(obj, matched.slice(1, -1), 'undefined')))
                 }
             }
         }
