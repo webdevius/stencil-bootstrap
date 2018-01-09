@@ -38,9 +38,16 @@ export class StencilComponent {
 
     regex = /\[\[+(.*?) ?\]\]+/g;
 
+    /**
+     * Method to dispatch HTMLCustomEvent 
+     * {@link https://developer.mozilla.org/en-US/docs/Web/Guide/Events/Creating_and_triggering_events}
+     * If scb-list has id, this id will be dispatched as event.detail
+     * 
+     * @memberof StencilComponent
+     */
     @Method()
     loadMore() {
-        this.onBottomReach.emit({})
+        this.onBottomReach.emit(this.el.id && this.el.id)
     }
 
     componentWillLoad() {
