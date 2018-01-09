@@ -36,15 +36,15 @@ export class ListPage {
             <div class="card col-md-6 col-sm-12" >
                 <div class="card-body">
                     <div class="media">
-                        <img class="d-flex mr-3 rounded" src="[user.picture.medium]" alt="Generic placeholder image" />
+                        <img class="d-flex mr-3 rounded" src="[[user.picture.medium]]" alt="Generic placeholder image" />
                         <div class="media-body">
-                            <h5 class="mt-0 capitalized">[user.name.first] [user.name.last]</h5>
+                            <h5 class="mt-0 capitalized">[[user.name.first]] [[user.name.last]]</h5>
 
                             <div>
                                 <span class="capitalized">
-                                    [user.location.city], [user.location.state],
+                                    [[user.location.city]], [[user.location.state]],
                                 </span>
-                                <span> [user.location.street] </span>
+                                <span> [[user.location.street]] </span>
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,10 @@ export class ListPage {
                         itemAs='user'
                         template={this.getUserTemplate()}
                         bindToList={false}
-                        wrapperClass='row'>
+                        wrapperClass='row'
+                        addClass='custom'
+                        addClassEven='custom-even'
+                        addClassFirst='custom-first'>
 
                     </scb-list>
                 </div>

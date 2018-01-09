@@ -20,9 +20,11 @@ export class StencilComponent {
     @Prop() itemAs: string = 'item';
     @Prop() template: VirtualNode;
 
-    @Prop() addClass?: string;
-    @Prop() addClassEven?: string;
-    @Prop() addClassOdd?: string;
+    @Prop() addClass?: string = '';
+    @Prop() addClassFirst?: string = '';
+    @Prop() addClassLast?: string = '';
+    @Prop() addClassEven?: string = '';
+    @Prop() addClassOdd?: string = '';
     @Prop() wrapperClass: string;
     @Prop() bottomOffset?: number = 20;
 
@@ -34,8 +36,7 @@ export class StencilComponent {
 
     @Event() onBottomReach: EventEmitter
 
-    //TODO: Change interpolation regex to double brackets pattern
-    regExpression = new RegExp(/\[(.*?)\]/g)
+    regex = /\[\[+(.*?) ?\]\]+/g;
 
     @Method()
     loadMore() {
@@ -83,46 +84,66 @@ export class StencilComponent {
         return this.itemsData
     }
 
+    /**
+     * Adds custom class for every first, last, even and odd node
+     * 
+     * @private
+     * @param {string} [base=''] 
+     * @param {number} index 
+     * @param {number} count 
+     * @returns {string} 
+     * @memberof StencilComponent
+     */
     private addListClasses(base: string = '', index: number, count: number): string {
-        let classString = base + ' list-item'
+        let classString = base + ' list-item'.concat(this.addClass && ' ' + this.addClass)
         if (index == 0) {
-            classString += ' list-item-first'
+            classString += ' list-item-first'.concat(this.addClassFirst && ' ' + this.addClassFirst)
         } if (index == count - 1) {
-            classString += ' list-item-last'
+            classString += ' list-item-last'.concat(this.addClassLast && ' ' + this.addClassLast)
         } if (index % 2 == 0) {
-            classString += ' list-item-even'
+            classString += ' list-item-even'.concat(this.addClassEven && ' ' + this.addClassEven)
         } if (Math.abs(index % 2) == 1) {
-            classString += ' list-item-odd'
+            classString += ' list-item-odd'.concat(this.addClassOdd && ' ' + this.addClassOdd)
         }
         return classString
     }
 
-    //TODO: Refactor this
+    /**
+     * Interpolates virtual node's text content and attributes
+     * 
+     * @private
+     * @param {VirtualNode} vnode 
+     * @param {*} obj 
+     * @returns {VirtualNode} 
+     * @memberof StencilComponent
+     */
     private interpolateText(vnode: VirtualNode, obj: any): VirtualNode {
         if (vnode.vtext) {
 
-            let matches = vnode.vtext.match(new RegExp(/\[(.*?)\]/g))
+            let matches = vnode.vtext.match(this.regex)
 
-            if (matches)
+            if (matches) {
                 matches.map(matched =>
 
                     vnode.vtext = vnode.vtext.replace(
                         matched,
-                        get(obj, matched.slice(1, -1), 'undefined')
+                        get(obj, matched.slice(2, -2), matched)
                     )
                 )
+            }
         }
         if (vnode.vattrs) {
             for (const key in vnode.vattrs) {
                 if (vnode.vattrs.hasOwnProperty(key)) {
-                    let matches = vnode.vattrs[key].match(new RegExp(/\[(.*?)\]/g))
+
+                    let matches = vnode.vattrs[key].match(this.regex)
 
                     if (matches)
                         matches.map(matched =>
 
                             vnode.vattrs[key] = vnode.vattrs[key].replace(
                                 matched,
-                                get(obj, matched.slice(1, -1), 'undefined')))
+                                get(obj, matched.slice(1, -1), matched)))
                 }
             }
         }
@@ -130,6 +151,16 @@ export class StencilComponent {
     }
 
 
+    /**
+     * Iterate current virtual node and it's children and invoke 
+     * interpolation function if there's text content or attributes
+     * 
+     * @private
+     * @param {VirtualNode} vnode 
+     * @param {object} obj 
+     * @returns {VirtualNode} 
+     * @memberof StencilComponent
+     */
     private iterateChildVNodes(vnode: VirtualNode, obj: object): VirtualNode {
 
         if (vnode.vtext)
