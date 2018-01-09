@@ -202,16 +202,4 @@ export class StencilComponent {
             </div>
         );
     }
-
-    /**
-     * Utils for performance check
-     */
-    private timeStart: any
-    private startPerfMark() {
-        this.timeStart = performance.now()
-    }
-    private endPerfMark() {
-        let timeEnd = performance.now()
-        console.log('Operations took ' + (timeEnd - this.timeStart) + 'ms.')
-    }
 }
