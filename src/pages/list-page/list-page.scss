@@ -1,3 +1,13 @@
 .capitalized {
     text-transform: capitalize;
 }
+
+.card.card-18 {
+    width: 14rem;
+}
+
+#users-boxed {
+    height: 500px;
+    display: block;
+    overflow-y: auto;
+}

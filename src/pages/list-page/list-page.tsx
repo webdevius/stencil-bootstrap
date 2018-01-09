@@ -9,24 +9,52 @@ import { Component, State, Listen } from '@stencil/core';
 })
 export class ListPage {
 
-    @State() users: any[] = []
+    @State() users1: any[] = []
+    @State() users2: any[] = []
 
     @Listen('onBottomReach')
     customEventHandler(event) {
-        this.initUsersData()
+
+        if (event.detail == 'users-infinite') {
+            this.initUsers1Data()
+        }
+
+        if (event.detail == 'users-boxed') {
+            this.initUsers2Data()
+        }
+
     }
 
     componentWillLoad() {
-        this.initUsersData()
+        this.initUsers1Data(20)
+        this.initUsers2Data(20)
     }
 
 
-    gettemplate() {
+
+
+    initUsers1Data(count?: number) {
+        this.getUsers(count).then(
+            users => this.users1 = this.users1.concat(users)
+        )
+    }
+    initUsers2Data(count?: number) {
+        this.getUsers(count).then(
+            users =>
+                this.users2 = this.users2.concat(users)
+
+        )
+    }
+
+    getUser2Template() {
         return (
-            <scb-alert type="primary">
-                This is a [item.name] alert  with <a href="#[index]" class="alert-link">an example [item.complex.name]</a>.
-                    Index of the component: [index]. And data2 is
-            </scb-alert>
+            <div class="card card-18" >
+                <img class="card-img-top" src="[[user.picture.large]]" alt="Card image cap" />
+                <div class="card-body">
+                    <h5 class="card-title capitalized">[[user.name.first]] [[user.name.last]]</h5>
+                    <a href="#" class="btn btn-primary">Send message</a>
+                </div>
+            </div>
         )
     }
 
@@ -53,25 +81,15 @@ export class ListPage {
         )
     }
 
-    initUsersData() {
-        this.getUsers().then(
-            users => this.users = this.users.concat(users)
-        )
-    }
-
     getUsersPage(): number {
-        return this.users.length / 10 + 1
+        return (this.users1.length + this.users2.length) / 10 + 1
     }
 
-    getUsers() {
+    getUsers(count = 10) {
 
         return new Promise((resolve, reject) => {
 
             let request = new XMLHttpRequest();
-            let count = this.users.length == 0
-                ? 20
-                : 10
-
             request.open('GET', `https://randomuser.me/api/?page=${this.getUsersPage()}&results=${count}&seed=abc`, true);
             request.onload = () => {
                 if (request.status >= 200 && request.status < 400) {
@@ -98,17 +116,48 @@ export class ListPage {
 
             <div class="container">
 
+                <h2>Infinite list component</h2>
+                {/* <h3 class="mt-4">API and usage</h3>
+
+                <p>Basic usage: </p>
+                <pre>
+                    <code>
+                        <scb-list id="users-boxed"
+                            items={this.users2}
+                            itemAs='user'
+                            template={this.getUser2Template()}
+                            bindToList={true}
+                            wrapperClass='row d-flex justify-content-around mx-0'
+                            addClass='my-3'> </scb-list>
+                    </code>
+                </pre>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptatum ullam qui explicabo vero. Sequi iusto adipisci, accusantium id aut ex, odio eius, consequuntur explicabo sapiente molestiae fugiat ipsa reprehenderit.</p> */}
+
+
+                <h3 class="mt-5">Boxed list of users with random data: </h3> <br />
+                {/* <div class='container'> */}
+
+                <scb-list id="users-boxed"
+                    items={this.users2}
+                    itemAs='user'
+                    template={this.getUser2Template()}
+                    bindToList={true}
+                    wrapperClass='row d-flex justify-content-around mx-0'
+                    addClass='my-3'> </scb-list>
+                {/* </div> */}
+                <br /><br />
+
                 <h3>Infinite list of users with data from <a href="randomuser.me">randomuser.me</a>: </h3>
                 <br />
-                <div class="row">
+                <div >
 
-                    <scb-list
-                        items={this.users}
+                    <scb-list id="users-infinite"
+                        items={this.users1}
                         itemAs='user'
                         template={this.getUserTemplate()}
                         bindToList={false}
                         wrapperClass='row'
-                        addClass='custom'
+                        addClass='custom mxy-2'
                         addClassEven='custom-even'
                         addClassFirst='custom-first'>
 
