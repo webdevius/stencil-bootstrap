@@ -10,11 +10,15 @@
     "build": "stencil build --prerender",
     "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
     "serve": "stencil-dev-server",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "heroku": "npm i && stencil build --dev && npm run serve --httpPort $PORT",
+    "node-server": "node express-server.js"
   },
   "dependencies": {
     "@stencil/core": "next",
-    "@stencil/router": "0.0.9"
+    "@stencil/router": "0.0.9",
+    "express": "^4.16.2",
+    "lodash": "^4.17.4"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
