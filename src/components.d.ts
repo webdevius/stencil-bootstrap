@@ -6,45 +6,32 @@
 
 import '@stencil/router';
 
-import {
-  VirtualNode,
-} from './components/scb-list/scb-list-interfaces';
 
 import {
-  StencilComponent as ScbList
-} from './components/scb-list/scb-list';
+  ListPage as ListPage
+} from './pages/list-page/list-page';
 
 declare global {
-  interface HTMLScbListElement extends ScbList, HTMLElement {
+  interface HTMLListPageElement extends ListPage, HTMLElement {
   }
-  var HTMLScbListElement: {
-    prototype: HTMLScbListElement;
-    new (): HTMLScbListElement;
+  var HTMLListPageElement: {
+    prototype: HTMLListPageElement;
+    new (): HTMLListPageElement;
   };
   interface HTMLElementTagNameMap {
-    "scb-list": HTMLScbListElement;
+    "list-page": HTMLListPageElement;
   }
   interface ElementTagNameMap {
-    "scb-list": HTMLScbListElement;
+    "list-page": HTMLListPageElement;
   }
   namespace JSX {
     interface IntrinsicElements {
-      "scb-list": JSXElements.ScbListAttributes;
+      "list-page": JSXElements.ListPageAttributes;
     }
   }
   namespace JSXElements {
-    export interface ScbListAttributes extends HTMLAttributes {
-      addClass?: string;
-      addClassEven?: string;
-      addClassFirst?: string;
-      addClassLast?: string;
-      addClassOdd?: string;
-      bindToList?: boolean;
-      bottomOffset?: number;
-      itemAs?: string;
-      items?: object[];
-      template?: VirtualNode;
-      wrapperClass?: string;
+    export interface ListPageAttributes extends HTMLAttributes {
+      
     }
   }
 }

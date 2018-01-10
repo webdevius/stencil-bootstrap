@@ -117,24 +117,10 @@ export class ListPage {
             <div class="container">
 
                 <h2>Infinite list component</h2>
-                {/* <h3 class="mt-4">API and usage</h3>
+                <h4 class="mt-4">API and usage are available <a href="https://github.com/AlexanderSergan/stencil-bootstrap/blob/develop/docs-md/scb-list.md">here</a></h4>
+                <br /><br />
 
-                <p>Basic usage: </p>
-                <pre>
-                    <code>
-                        <scb-list id="users-boxed"
-                            items={this.users2}
-                            itemAs='user'
-                            template={this.getUser2Template()}
-                            bindToList={true}
-                            wrapperClass='row d-flex justify-content-around mx-0'
-                            addClass='my-3'> </scb-list>
-                    </code>
-                </pre>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius voluptatum ullam qui explicabo vero. Sequi iusto adipisci, accusantium id aut ex, odio eius, consequuntur explicabo sapiente molestiae fugiat ipsa reprehenderit.</p> */}
-
-
-                <h3 class="mt-5">Boxed list of users with random data: </h3> <br />
+                <h4 class="mt-5">Boxed list of users with random data: </h4> <br />
                 {/* <div class='container'> */}
 
                 <scb-list id="users-boxed"
@@ -147,7 +133,7 @@ export class ListPage {
                 {/* </div> */}
                 <br /><br />
 
-                <h3>Infinite list of users with data from <a href="randomuser.me">randomuser.me</a>: </h3>
+                <h4>Infinite list of users with data from <a href="randomuser.me">randomuser.me</a>: </h4>
                 <br />
                 <div >
 
