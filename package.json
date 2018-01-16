@@ -1,8 +1,8 @@
 {
-  "name": "@stencil/starter",
+  "name": "stencil-bootrap",
   "private": true,
   "version": "0.0.1",
-  "description": "Stencil Starter App",
+  "description": "Bootstrap componentes built with StencilJS",
   "files": [
     "dist/"
   ],
@@ -10,15 +10,19 @@
     "build": "stencil build --prerender",
     "dev": "sd concurrent \"stencil build --dev --watch\" \"stencil-dev-server\" ",
     "serve": "stencil-dev-server",
-    "start": "npm run dev"
+    "start": "npm run dev",
+    "test": "jest --no-cache",
+    "test.watch": "jest --watch --no-cache"
   },
   "dependencies": {
     "@stencil/core": "next",
-    "@stencil/router": "0.0.9"
+    "@stencil/router": "latest"
   },
   "devDependencies": {
     "@stencil/dev-server": "latest",
     "@stencil/utils": "latest",
+    "@types/jest": "^21.1.1",
+    "jest": "^21.2.1",
     "tslint": "^5.7.0",
     "tslint-config-airbnb": "^5.3.0"
   },
@@ -26,10 +30,23 @@
     "type": "git",
     "url": "git+https://github.com/ionic-team/stencil-starter.git"
   },
-  "author": "Ionic Team",
+  "author": "Khaled Shaaban",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ionic-team/stencil"
+    "url": "https://github.com/kshaaban-/stencil-bootstrap/issues"
   },
-  "homepage": "https://github.com/ionic-team/stencil"
+  "homepage": "https://github.com/kshaaban-/stencil-bootstrap",
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "json",
+      "jsx"
+    ]
+  }
 }
