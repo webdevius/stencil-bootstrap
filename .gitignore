@@ -1,8 +1,6 @@
 dist/
-www/assets
-www/build
-www/index.html
-www/manifest.json
+!www/favicon.ico
+www/
 
 *~
 *.sw[mnpcod]
